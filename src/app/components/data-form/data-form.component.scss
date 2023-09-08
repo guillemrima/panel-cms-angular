@@ -1,0 +1,29 @@
+.form-container {
+  padding: 1rem;
+  border: 2px solid rgb(240, 248, 255);
+  background-color: rgb(244, 244, 244);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.input-container {
+  width: 100%;
+}
+
+.input-container mat-form-field {
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.button-container button {
+  width: 100%;
+}
+
+.input-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+

@@ -1,0 +1,55 @@
+<section class="data-form">
+  <div class="form-container" [formGroup]="form">
+      <div class="input-group">
+        <div class="input-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" />
+            <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+              <mat-error *ngIf="form.get('name')?.hasError('required')">El nombre es requerido</mat-error>
+            </div>
+          </mat-form-field>
+        </div>
+        <div class="input-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Apellidos</mat-label>
+            <input matInput formControlName="surnames" />
+            <div *ngIf="form.get('surnames')?.invalid && form.get('surnames')?.touched">
+              <mat-error *ngIf="form.get('surnames')?.hasError('required')">Los apellidos son requerido</mat-error>
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="input-container">
+        <mat-form-field appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="email" />
+          <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+            <mat-error *ngIf="form.get('email')?.hasError('required')">El email es requerido</mat-error>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" type="password"/>
+          <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+            <mat-error *ngIf="form.get('password')?.hasError('required')">La contraseña es requerida</mat-error>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Confirmar contraseña</mat-label>
+          <input matInput formControlName="passwordConfirm" type="password"/>
+          <div *ngIf="form.get('passwordConfirm')?.invalid && form.get('passwordConfirm')?.touched">
+            <mat-error *ngIf="form.get('passwordConfirm')?.hasError('required')">Debes confimar la contraseña</mat-error>
+          </div>
+        </mat-form-field>
+      </div>
+
+      <div class="button-container">
+        <button mat-raised-button color="primary" [disabled]="form.invalid">Enviar</button>
+      </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+.header-content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.content-container {
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  gap: 1rem;
+}
+
+.header-content {
+  margin-top: 2rem;
+}
+
+.header-content h1 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: rgb(47, 47, 47);
+}
