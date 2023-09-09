@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-data-list',
   templateUrl: './data-list.component.html',
   styleUrls: ['./data-list.component.scss']
 })
-export class DataListComponent {
+export class DataListComponent implements OnInit {
+  data: any;
+  dataArray: any[] = [];
 
+  constructor(private DataService: DataService) { }
+
+  ngOnInit(): void {
+    this.DataService.data$.subscribe(data => {
+      this.data = data;
+
+      if (this.data != null) {
+        this.dataArray.push(this.data)
+      }
+    })
+  }
 }

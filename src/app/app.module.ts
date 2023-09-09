@@ -11,12 +11,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { ContentComponent } from './components/data-list/content/content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataListComponent,
     DataFormComponent,
+    ContentComponent,
   ],
   imports: [
     BrowserModule,

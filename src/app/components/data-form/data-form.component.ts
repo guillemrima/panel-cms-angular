@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DataService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-data-form',
@@ -20,7 +21,10 @@ export class DataFormComponent {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private dataService: DataService
+  ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       surnames: ['', Validators.required],
@@ -28,6 +32,11 @@ export class DataFormComponent {
       password: ['', [Validators.required, Validators.minLength(8)]],
       passwordConfirm: ['', [Validators.required, Validators.minLength(8)]]
     })
+  }
+
+  onSubmit(): void {
+    const formData = this.form.value;
+    this.dataService.sendFormData(formData);
   }
 
 }

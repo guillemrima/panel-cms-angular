@@ -1,6 +1,8 @@
-.header-content {
+.header{
   display: flex;
   justify-content: center;
+  padding: 1rem 0rem;
+  background-color: white;
   margin-bottom: 2rem;
 }
 
@@ -11,11 +13,7 @@
   gap: 1rem;
 }
 
-.header-content {
-  margin-top: 2rem;
-}
-
-.header-content h1 {
+.header h1 {
   font-weight: 600;
   font-size: 1.5rem;
   color: rgb(47, 47, 47);
