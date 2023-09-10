@@ -14,9 +14,8 @@ export class DataListComponent implements OnInit {
 
   ngOnInit(): void {
     this.DataService.data$.subscribe(data => {
-      this.data = data;
-
-      if (this.data != null) {
+      if (data != null) {
+        this.data = data;
         this.dataArray.push(this.data)
       }
     })
