@@ -17,6 +17,7 @@ export class DataFormComponent implements OnInit {
     private DataService: DataService
   ) {
     this.form = this.fb.group({
+      id: [Number],
       name: ['', Validators.required],
       surnames: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
@@ -35,10 +36,11 @@ export class DataFormComponent implements OnInit {
   onSubmit(): void {
     const formData = this.form.value;
     this.DataService.sendListData(formData);
+    this.form.reset();
   }
 
-  editData(data: object) {
-    console.log(data)
+  editData(data: any) {
+    this.form.patchValue(data);
   }
 
 }

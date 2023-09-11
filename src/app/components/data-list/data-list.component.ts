@@ -15,7 +15,7 @@ export class DataListComponent implements OnInit {
       surnames: 'Rivas Martorell',
       email: 'rivasmartorellguillem@gmail.com',
       password: 'password123',
-      passwordConfirmed: 'password123'
+      passwordConfirm: 'password123'
     }
   ];
 
@@ -24,10 +24,13 @@ export class DataListComponent implements OnInit {
   ngOnInit(): void {
     this.DataService.listData$.subscribe(data => {
       if (data != null) {
-        this.data = data;
-        this.dataArray.push(this.data);
-        this.data.id = this.dataArray.length;
-        console.log("hola desde list");
+        if (data.id != null) {
+          this.dataArray[data.id - 1] = data
+        } else {
+          this.data = data;
+          this.dataArray.push(this.data);
+          this.data.id = this.dataArray.length;
+        }
       }
     });
   }

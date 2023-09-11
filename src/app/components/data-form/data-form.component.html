@@ -4,7 +4,7 @@
         <div class="input-container">
           <mat-form-field appearance="fill">
             <mat-label>Nombre</mat-label>
-            <input matInput formControlName="name" />
+            <input matInput formControlName="name"/>
             <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
               <mat-error *ngIf="form.get('name')?.hasError('required')">El nombre es requerido</mat-error>
             </div>

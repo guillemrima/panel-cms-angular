@@ -18,3 +18,10 @@
   font-size: 1.5rem;
   color: whitesmoke;
 }
+
+@media (max-width: 1000px) {
+  .content-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
