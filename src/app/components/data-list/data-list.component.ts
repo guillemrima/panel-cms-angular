@@ -8,17 +8,32 @@ import { DataService } from 'src/app/services/data-service.service';
 })
 export class DataListComponent implements OnInit {
   data: any;
-  dataArray: any[] = [];
+  dataArray: any[] = [
+    {
+      id: 1,
+      name: 'Guillem',
+      surnames: 'Rivas Martorell',
+      email: 'rivasmartorellguillem@gmail.com',
+      password: 'password123',
+      passwordConfirmed: 'password123'
+    }
+  ];
 
   constructor(private DataService: DataService) { }
 
   ngOnInit(): void {
-    this.DataService.data$.subscribe(data => {
+    this.DataService.listData$.subscribe(data => {
       if (data != null) {
         this.data = data;
-        this.dataArray.push(this.data)
-        this.data.id = this.dataArray.length
+        this.dataArray.push(this.data);
+        this.data.id = this.dataArray.length;
+        console.log("hola desde list");
       }
-    })
+    });
+  }
+
+  editData(id: number) {
+    const data = this.dataArray[id - 1];
+    this.DataService.sendFormData(data);
   }
 }

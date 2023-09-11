@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-content',
@@ -8,8 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ContentComponent implements OnInit {
 
   @Input() data: any;
+  @Output() sendEditData = new EventEmitter<number>();
 
   ngOnInit(): void {
-    console.log(this.data)
+  }
+
+  editData(): void {
+    this.sendEditData.emit(this.data.id)
   }
 }

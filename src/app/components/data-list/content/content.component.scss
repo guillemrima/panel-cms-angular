@@ -43,4 +43,9 @@
 .controls button{
   all: unset;
   cursor: pointer;
+  transition: 100ms;
+}
+
+.controls button:hover {
+  transform: scale(115%);
 }

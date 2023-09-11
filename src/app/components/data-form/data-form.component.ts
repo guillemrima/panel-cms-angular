@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { skip } from 'rxjs';
 import { DataService } from 'src/app/services/data-service.service';
 
 @Component({
@@ -7,23 +8,13 @@ import { DataService } from 'src/app/services/data-service.service';
   templateUrl: './data-form.component.html',
   styleUrls: ['./data-form.component.scss']
 })
-export class DataFormComponent {
-
-  //Una forma más sencilla y básica de hacer un formulario con Angular
-
-  // name: FormControl = new FormControl('', Validators.required);
-  // surnames: FormControl = new FormControl('', Validators.required);
-  // email: FormControl = new FormControl('', [Validators.email, Validators.required]);
-  // password: FormControl = new FormControl('', Validators.required);
-  // passwordConfirm: FormControl = new FormControl('', Validators.required);
-
-  //Una forma más avanzada de hacer un formulario con Angular
+export class DataFormComponent implements OnInit {
 
   form: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private dataService: DataService
+    private DataService: DataService
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -33,10 +24,21 @@ export class DataFormComponent {
       passwordConfirm: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
+  ngOnInit(): void {
+    this.DataService.formData$
+      .pipe(skip(1))
+      .subscribe(data => {
+        this.editData(data);
+      });
+  }
 
   onSubmit(): void {
     const formData = this.form.value;
-    this.dataService.sendFormData(formData);
+    this.DataService.sendListData(formData);
+  }
+
+  editData(data: object) {
+    console.log(data)
   }
 
 }

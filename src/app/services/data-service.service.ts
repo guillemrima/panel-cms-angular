@@ -5,10 +5,17 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  private dataSubject = new BehaviorSubject<any>(null);
-  public data$ = this.dataSubject.asObservable();
+  private formDataSubject = new BehaviorSubject<any>(null);
+  private listDataSubject = new BehaviorSubject<any>(null);
+
+  public formData$ = this.formDataSubject.asObservable();
+  public listData$ = this.listDataSubject.asObservable();
 
   sendFormData(data: any) {
-    this.dataSubject.next(data);
+    this.formDataSubject.next(data);
   }
+  sendListData(data: any) {
+    this.listDataSubject.next(data);
+  }
+
 }
