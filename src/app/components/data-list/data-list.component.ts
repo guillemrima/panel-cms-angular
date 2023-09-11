@@ -17,6 +17,7 @@ export class DataListComponent implements OnInit {
       if (data != null) {
         this.data = data;
         this.dataArray.push(this.data)
+        this.data.id = this.dataArray.length
       }
     })
   }

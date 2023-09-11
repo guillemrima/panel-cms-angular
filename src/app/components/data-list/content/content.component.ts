@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
-  @Input() data: any = '';
+  @Input() data: any;
 
   ngOnInit(): void {
     console.log(this.data)
