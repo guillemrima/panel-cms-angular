@@ -1,21 +1,35 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private formDataSubject = new BehaviorSubject<any>(null);
-  private listDataSubject = new BehaviorSubject<any>(null);
+  private getUserDataEvent = new Subject<void>();
 
-  public formData$ = this.formDataSubject.asObservable();
-  public listData$ = this.listDataSubject.asObservable();
+  private apiUrl = 'http://localhost:8080/users';
 
-  sendFormData(data: any) {
-    this.formDataSubject.next(data);
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      // Otras cabeceras aquí, si es necesario
+    }),
+  };
+  constructor(private http: HttpClient) { }
+
+  createUser(data: any) {
+    this.http.post(this.apiUrl, data, this.httpOptions).subscribe(
+      (response) => {
+        this.getUserDataEvent.next()
+      },
+      (error) => {
+        console.error('Error al realizar la solicitud:', error);
+      }
+    );
   }
-  sendListData(data: any) {
-    this.listDataSubject.next(data);
-  }
 
+  getUserData() {
+    return this.getUserDataEvent.asObservable();
+  }
 }

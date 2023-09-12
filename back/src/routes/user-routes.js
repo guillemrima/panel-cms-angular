@@ -13,7 +13,7 @@ module.exports = (app) => {
         next();
     });
 
-    router.post("/",);
+    router.post("/", controller.create);
     router.get("/", controller.findAll);
     router.get("/:id", );
     router.put("/:id",);

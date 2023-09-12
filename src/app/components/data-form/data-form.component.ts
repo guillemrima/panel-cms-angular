@@ -17,7 +17,7 @@ export class DataFormComponent implements OnInit {
     private DataService: DataService
   ) {
     this.form = this.fb.group({
-      id: ['', Number],
+      id: [Number],
       name: ['', Validators.required],
       surnames: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
@@ -26,16 +26,16 @@ export class DataFormComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    this.DataService.formData$
-      .pipe(skip(1))
-      .subscribe(data => {
-        this.editData(data);
-      });
+    // this.DataService.formData$
+    //   .pipe(skip(1))
+    //   .subscribe(data => {
+    //     this.editData(data);
+    //   });
   }
 
-  onSubmit(): void {
+  onSubmit() {
     const formData = this.form.value;
-    this.DataService.sendListData(formData);
+    this.DataService.createUser({ formData });
     this.form.reset();
   }
 

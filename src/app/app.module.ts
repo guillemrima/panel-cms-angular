@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ContentComponent } from './components/data-list/content/content.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

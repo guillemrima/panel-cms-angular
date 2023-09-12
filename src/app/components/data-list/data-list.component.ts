@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data-service.service';
+import { Subscription } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-data-list',
@@ -8,39 +11,35 @@ import { DataService } from 'src/app/services/data-service.service';
 })
 export class DataListComponent implements OnInit {
   data: any;
-  dataArray: any[] = [
-    {
-      id: 1,
-      name: 'Guillem',
-      surnames: 'Rivas Martorell',
-      email: 'rivasmartorellguillem@gmail.com',
-      password: 'password123',
-      passwordConfirm: 'password123'
-    }
-  ];
+  dataArray: any;
+  private subscripcion: Subscription;
 
-  constructor(private DataService: DataService) { }
+  constructor(private DataService: DataService, private http: HttpClient) {
+    this.subscripcion = this.DataService.getUserData().subscribe(() => {
+      this.getUserData()
+    })
+  }
+
 
   ngOnInit(): void {
-    this.DataService.listData$.subscribe(data => {
-      if (data != null) {
-        if (data.id != '') {
-          this.dataArray[data.id - 1] = data
-        } else {
-          this.data = data;
-          this.dataArray.push(this.data);
-          this.data.id = this.dataArray.length;
-        }
-      }
-    });
+    this.http.get('http://localhost:8080/users').subscribe(data => {
+      this.dataArray = data
+    })
+
   }
 
-  editData(id: number) {
-    const data = this.dataArray[id - 1];
-    this.DataService.sendFormData(data);
+  getUserData() {
+    this.http.get('http://localhost:8080/users').subscribe(data => {
+      this.dataArray = data;
+      console.log(data)
+    })
   }
 
-  deleteData(id: number) {
-    delete this.dataArray[id - 1]
+  editData() {
+
+  }
+
+  deleteData() {
+
   }
 }
