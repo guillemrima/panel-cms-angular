@@ -1,4 +1,4 @@
-<div class="content-container">
+<div class="content-container" *ngIf="data != undefined">
   <div class="head-content">
     <div class="content-id">
       <p>
@@ -9,7 +9,7 @@
       <button (click)="editData()">
         <mat-icon aria-hidden="false" aria-label="edit" fontIcon="edit" style="color: white;"></mat-icon>
       </button>
-      <button>
+      <button (click)="deleteData()">
         <mat-icon aria-hidden="false" aria-label="delete" fontIcon="delete" style="color: white;"></mat-icon>
 
       </button>

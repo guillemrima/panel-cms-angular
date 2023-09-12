@@ -9,11 +9,16 @@ export class ContentComponent implements OnInit {
 
   @Input() data: any;
   @Output() sendEditData = new EventEmitter<number>();
+  @Output() sendDeleteData = new EventEmitter<number>();
 
   ngOnInit(): void {
   }
 
   editData(): void {
-    this.sendEditData.emit(this.data.id)
+    this.sendEditData.emit(this.data.id);
+  }
+
+  deleteData(): void {
+    this.sendDeleteData.emit(this.data.id);
   }
 }

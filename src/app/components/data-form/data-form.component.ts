@@ -17,7 +17,7 @@ export class DataFormComponent implements OnInit {
     private DataService: DataService
   ) {
     this.form = this.fb.group({
-      id: [Number],
+      id: ['', Number],
       name: ['', Validators.required],
       surnames: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],

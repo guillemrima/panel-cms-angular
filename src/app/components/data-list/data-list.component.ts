@@ -24,7 +24,7 @@ export class DataListComponent implements OnInit {
   ngOnInit(): void {
     this.DataService.listData$.subscribe(data => {
       if (data != null) {
-        if (data.id != null) {
+        if (data.id != '') {
           this.dataArray[data.id - 1] = data
         } else {
           this.data = data;
@@ -38,5 +38,9 @@ export class DataListComponent implements OnInit {
   editData(id: number) {
     const data = this.dataArray[id - 1];
     this.DataService.sendFormData(data);
+  }
+
+  deleteData(id: number) {
+    delete this.dataArray[id - 1]
   }
 }
