@@ -16,8 +16,20 @@
   font-size: 0.8rem;
 }
 
+.button-container {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  gap: 0.5rem;
+}
+
 .button-container button {
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button-container button mat-icon {
+  margin: auto;
 }
 
 .input-group {

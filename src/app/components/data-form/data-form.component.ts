@@ -55,4 +55,8 @@ export class DataFormComponent implements OnInit {
 
     this.form.reset();
   }
+
+  resetForm():void {
+    this.form.reset();
+  }
 }
