@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { skip } from 'rxjs';
-import { DataService } from 'src/app/services/data-service.service';
+import { DataService } from 'src/app/services/user-service/data-service.service';
 import { Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -15,7 +15,7 @@ export class DataFormComponent implements OnInit {
 
   form: FormGroup;
   isEditUser: boolean = false;
-
+  userEditData: any;
 
   constructor(
     private fb: FormBuilder,
@@ -34,15 +34,25 @@ export class DataFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.DataService.getSelectedData().pipe((skip(1))).subscribe((selectedData) => {
-      this.form.patchValue(selectedData);
+      this.userEditData = selectedData
+      this.form.patchValue(this.userEditData);
       this.isEditUser = true;
     });
   }
 
   onSubmit() {
-    const formData = this.form.value;
-    this.DataService.createUser({ formData });
-    this._snackBar.open('¡Usuario creado correctamente!', 'Ok', { duration: 2000 });
+    const userData = this.form.value;
+    const userId = this.userEditData.id;
+
+    if (this.isEditUser) {
+      console.log(this.userEditData)
+      this.DataService.updateUser(userId, userData);
+      this._snackBar.open('¡Usuario actualizado correctamente!', 'Ok', { duration: 2000 })
+    } else {
+      this.DataService.createUser({ userData });
+      this._snackBar.open('¡Usuario creado correctamente!', 'Ok', { duration: 2000 });
+    }
+
     this.form.reset();
   }
 }

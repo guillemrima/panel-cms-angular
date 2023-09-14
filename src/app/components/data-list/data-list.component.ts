@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data-service.service';
+import { DataService } from 'src/app/services/user-service/data-service.service';
 import { Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 

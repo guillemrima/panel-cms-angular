@@ -16,6 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     DataListComponent,
     DataFormComponent,
     ContentComponent,
+    ConfirmDialogComponent,
+    SnackbarComponent,
   ],
   imports: [
     BrowserModule,

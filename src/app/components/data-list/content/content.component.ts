@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DataService } from 'src/app/services/data-service.service';
+import { DataService } from 'src/app/services/user-service/data-service.service';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog-service/confirm-dialog.service';
 
 @Component({
   selector: 'app-content',
@@ -8,7 +9,7 @@ import { DataService } from 'src/app/services/data-service.service';
 })
 export class ContentComponent implements OnInit {
 
-  constructor(private DataService: DataService) { }
+  constructor(private DataService: DataService, private ConfirmDialogService: ConfirmDialogService) { }
 
   @Input() data: any;
 
@@ -16,7 +17,7 @@ export class ContentComponent implements OnInit {
   }
 
   deleteUser(): void {
-    this.DataService.deleteUser(this.data.id);
+    this.ConfirmDialogService.confirmDeleteUser(this.data);
   }
 
   editUser(): void {

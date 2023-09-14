@@ -1,0 +1,7 @@
+<mat-dialog-content>
+  ¿Estás seguro de que deseas eliminar a <span class="strong">{{data.data.name}} {{data.data.surnames}}</span> con el id nº <span class="strong">{{data.data.id}}</span>?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" (click)="deleteUser()">Borrar</button>
+</mat-dialog-actions>

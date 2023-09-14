@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +40,17 @@ export class DataService {
       },
       (error) => {
         console.error('Error al realizar la solicitud:', error)
+      }
+    )
+  }
+
+  updateUser(userId: any, userData: any) {
+    this.http.put(`${this.apiUrl}/${userId}`, userData, this.httpOptions).subscribe(
+      (response) => {
+        this.getUserDataEvent.next()
+      },
+      (error) => {
+        console.error('Error al actualizar los datos del usuario:', error)
       }
     )
   }
