@@ -49,7 +49,14 @@
       </div>
 
       <div class="button-container">
-        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()">Enviar</button>
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()">
+          <ng-container *ngIf="isEditUser; else createUser">
+            Actualizar usuario
+          </ng-container>
+          <ng-template #createUser>
+            Crear usuario
+          </ng-template>
+        </button>
       </div>
   </div>
 </section>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -52,8 +53,15 @@ export class DataService {
     return this.dataToEdit;
   }
 
-  setSelectedData(data: any) {
-    this.selectedDataSubject.next(data);
+  setSelectedData(id: number) {
+    this.http.get(`${this.apiUrl}/${id}`).subscribe(
+      (response) => {
+        this.selectedDataSubject.next(response);
+      },
+      (error) => {
+        console.log('Error al realizar la solicitud:', error)
+      }
+    )
   }
 
   getSelectedData(): Observable<any> {

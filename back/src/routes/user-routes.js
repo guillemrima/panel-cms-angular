@@ -15,7 +15,7 @@ module.exports = (app) => {
 
     router.post("/", controller.create);
     router.get("/", controller.findAll);
-    router.get("/:id", );
+    router.get("/:id", controller.findOne);
     router.put("/:id",);
     router.delete("/:id", controller.delete);
 

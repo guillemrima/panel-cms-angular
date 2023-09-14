@@ -14,6 +14,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class DataFormComponent implements OnInit {
 
   form: FormGroup;
+  isEditUser: boolean = false;
+
 
   constructor(
     private fb: FormBuilder,
@@ -31,8 +33,9 @@ export class DataFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.DataService.getSelectedData().subscribe((selectedData) => {
-      console.log(selectedData)
+    this.DataService.getSelectedData().pipe((skip(1))).subscribe((selectedData) => {
+      this.form.patchValue(selectedData);
+      this.isEditUser = true;
     });
   }
 
