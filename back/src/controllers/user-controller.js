@@ -11,7 +11,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  console.log(req.body.formData)
+
   User.create(req.body.formData).then(async data => {
     res.status(200).send(data);
   }).catch(async err => {
@@ -20,3 +20,15 @@ exports.create = (req, res) => {
     })
   })
 }
+
+exports.delete = (req, res) => {
+  console.log(`Eliminando usuario con id ${req.params.id}...`)
+
+  User.destroy({
+    where: {id: req.params.id}
+  }).then (() => {
+    res.status(200).send()
+  })
+}
+
+

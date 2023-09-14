@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -9,6 +9,10 @@ export class DataService {
   private getUserDataEvent = new Subject<void>();
 
   private apiUrl = 'http://localhost:8080/users';
+
+  private dataToEdit: any;
+  private dataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  private selectedDataSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -29,7 +33,30 @@ export class DataService {
     );
   }
 
+  deleteUser(id: number) {
+    this.http.delete(`${this.apiUrl}/${id}`).subscribe(
+      (response) => {
+        this.getUserDataEvent.next()
+      },
+      (error) => {
+        console.error('Error al realizar la solicitud:', error)
+      }
+    )
+  }
+
   getUserData() {
     return this.getUserDataEvent.asObservable();
+  }
+
+  getDataToEdit() {
+    return this.dataToEdit;
+  }
+
+  setSelectedData(data: any) {
+    this.selectedDataSubject.next(data);
+  }
+
+  getSelectedData(): Observable<any> {
+    return this.selectedDataSubject.asObservable();
   }
 }

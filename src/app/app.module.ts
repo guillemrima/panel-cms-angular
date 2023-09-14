@@ -14,7 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { ContentComponent } from './components/data-list/content/content.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientMo
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

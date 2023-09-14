@@ -10,7 +10,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./data-list.component.scss']
 })
 export class DataListComponent implements OnInit {
-  data: any;
   dataArray: any;
   private subscripcion: Subscription;
 
@@ -33,13 +32,5 @@ export class DataListComponent implements OnInit {
       this.dataArray = data;
       console.log(data)
     })
-  }
-
-  editData() {
-
-  }
-
-  deleteData() {
-
   }
 }

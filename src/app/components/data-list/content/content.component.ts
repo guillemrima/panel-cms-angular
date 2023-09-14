@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DataService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-content',
@@ -7,18 +8,18 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
+  constructor(private DataService: DataService) { }
+
   @Input() data: any;
-  @Output() sendEditData = new EventEmitter<number>();
-  @Output() sendDeleteData = new EventEmitter<number>();
 
   ngOnInit(): void {
   }
 
-  editData(): void {
-    this.sendEditData.emit(this.data.id);
+  deleteUser(): void {
+    this.DataService.deleteUser(this.data.id);
   }
 
-  deleteData(): void {
-    this.sendDeleteData.emit(this.data.id);
+  editUser(): void {
+    this.DataService.setSelectedData(this.data.id);
   }
 }
