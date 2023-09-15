@@ -30,7 +30,6 @@ export class DataListComponent implements OnInit {
   getUserData() {
     this.http.get('http://localhost:8080/users').subscribe(data => {
       this.dataArray = data;
-      console.log(data)
     })
   }
 }

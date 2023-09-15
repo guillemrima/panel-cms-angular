@@ -42,12 +42,12 @@ export class DataFormComponent implements OnInit {
 
   onSubmit() {
     const userData = this.form.value;
-    const userId = this.userEditData.id;
 
     if (this.isEditUser) {
-      console.log(this.userEditData)
+      const userId = this.userEditData.id
       this.DataService.updateUser(userId, userData);
       this._snackBar.open('¡Usuario actualizado correctamente!', 'Ok', { duration: 2000 })
+      this.isEditUser = false
     } else {
       this.DataService.createUser({ userData });
       this._snackBar.open('¡Usuario creado correctamente!', 'Ok', { duration: 2000 });
@@ -56,7 +56,7 @@ export class DataFormComponent implements OnInit {
     this.form.reset();
   }
 
-  resetForm():void {
+  resetForm(): void {
     this.form.reset();
   }
 }

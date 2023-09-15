@@ -11,8 +11,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.create = (req, res) => {
-
-  User.create(req.body.formData).then(async data => {
+  User.create(req.body).then(async data => {
     res.status(200).send(data);
   }).catch(async err => {
     res.status(500).send({

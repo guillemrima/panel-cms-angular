@@ -23,7 +23,8 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   createUser(data: any) {
-    this.http.post(this.apiUrl, data, this.httpOptions).subscribe(
+    const userData = data.userData
+    this.http.post(this.apiUrl, userData, this.httpOptions).subscribe(
       (response) => {
         this.getUserDataEvent.next()
       },
