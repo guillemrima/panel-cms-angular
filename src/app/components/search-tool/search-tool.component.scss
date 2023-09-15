@@ -1,0 +1,17 @@
+.search-tool-container {
+  width: 18rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(131, 131, 131);
+  background-color: rgba(255, 255, 255, 0.745);
+  border-radius: 15px;
+  padding: 0 0.25rem;
+}
+
+input {
+  all: unset;
+  width: 16rem;
+}
+
+

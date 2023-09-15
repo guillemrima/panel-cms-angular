@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { SearchToolComponent } from './components/search-tool/search-tool.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     ContentComponent,
     ConfirmDialogComponent,
     SnackbarComponent,
+    SearchToolComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     MatIconModule,
     MatDialogModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
