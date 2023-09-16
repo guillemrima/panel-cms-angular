@@ -1,6 +1,13 @@
 <div class="search-tool-container">
-    <mat-icon fontIcon="search"></mat-icon>
     <form>
-      <input type="text" placeholder="Buscar por nombre, apellidos, correo..."/>
+      <div class="input">
+        <mat-icon fontIcon="search" style="color: rgb(43, 113, 255)"></mat-icon>
+        <input type="text" placeholder="¿No encuentras la ficha que buscas? Escribe aquí el dato que te interesa."/>
+      </div>
+      <select id="campo" name="campo" class="selector">
+          <option value="nombre">Nombre</option>
+          <option value="apellidos">Apellidos</option>
+          <option value="email">Email</option>
+      </select>
     </form>
 </div>

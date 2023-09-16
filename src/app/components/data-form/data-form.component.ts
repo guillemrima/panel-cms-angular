@@ -58,5 +58,7 @@ export class DataFormComponent implements OnInit {
 
   resetForm(): void {
     this.form.reset();
+    this.isEditUser = false;
+    this.userEditData = null
   }
 }
