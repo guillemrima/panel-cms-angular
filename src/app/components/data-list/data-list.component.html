@@ -1,6 +1,6 @@
 <section class="data-list">
   <div class="search-tool">
-    <app-search-tool></app-search-tool>
+    <app-search-tool (sendFilterData)="getFilterUsers($event)"></app-search-tool>
   </div>
   <div class="content-container">
   <app-content *ngFor="let data of dataArray" [data]="data"></app-content>

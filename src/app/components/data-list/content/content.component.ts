@@ -9,6 +9,7 @@ import { ConfirmDialogService } from 'src/app/services/confirm-dialog-service/co
 })
 export class ContentComponent implements OnInit {
 
+
   constructor(private DataService: DataService, private ConfirmDialogService: ConfirmDialogService) { }
 
   @Input() data: any;

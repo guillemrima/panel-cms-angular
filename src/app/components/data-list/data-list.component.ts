@@ -32,4 +32,11 @@ export class DataListComponent implements OnInit {
       this.dataArray = data;
     })
   }
+
+  getFilterUsers(filterData: any) {
+    this.http.get(`http://localhost:8080/users?data=${filterData.data}&category=${filterData.category}`).subscribe(data => {
+      this.dataArray = data
+    })
+
+  }
 }

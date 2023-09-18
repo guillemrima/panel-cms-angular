@@ -3,8 +3,17 @@ const User = db.User;
 const Op = db.Sequelize.Op;
 
 exports.findAll = (req, res) => {
+  const filterCategory = req.query.category;
+  const filterData = req.query.data;
+  let condition = {}
 
-  User.findAll()
+  if (filterCategory && filterData != undefined) {
+    condition = {[filterCategory] : [filterData]}
+  }
+
+  User.findAll({
+    where: condition
+  })
   .then(result => {
     res.status(200).send(result)
   })

@@ -1,13 +1,15 @@
 <div class="search-tool-container">
-    <form>
+    <form (keyup)="getfilterData()" [formGroup]="form">
       <div class="input">
         <mat-icon fontIcon="search" style="color: rgb(43, 113, 255)"></mat-icon>
-        <input type="text" placeholder="¿No encuentras la ficha que buscas? Escribe aquí el dato que te interesa."/>
+        <input formControlName="data" type="text" placeholder="¿No encuentras la ficha que buscas? Escribe aquí el dato que te interesa."/>
       </div>
-      <select id="campo" name="campo" class="selector">
-          <option value="nombre">Nombre</option>
-          <option value="apellidos">Apellidos</option>
-          <option value="email">Email</option>
-      </select>
+      <div>
+        <select id="campo" name="campo" class="selector" formControlName="category">
+            <option value="name" selected>Nombre</option>
+            <option value="surnames">Apellidos</option>
+            <option value="email">Email</option>
+        </select>
+      </div>
     </form>
 </div>
