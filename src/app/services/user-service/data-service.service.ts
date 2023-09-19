@@ -14,6 +14,9 @@ export class DataService {
   private dataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   private selectedDataSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
+  private imageModal = new BehaviorSubject<boolean>(false);
+  buttonImageModalClicked$ = this.imageModal.asObservable();
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -77,5 +80,9 @@ export class DataService {
 
   getSelectedData(): Observable<any> {
     return this.selectedDataSubject.asObservable();
+  }
+
+  openImageModal() {
+    this.imageModal.next(true);
   }
 }

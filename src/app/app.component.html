@@ -4,7 +4,6 @@
   </div>
 </header>
 
-<content>
   <div class="filter-container">
     <!-- <app-search-tool></app-search-tool> -->
   </div>
@@ -12,4 +11,7 @@
     <app-data-list></app-data-list>
     <app-data-form></app-data-form>
   </div>
-</content>
+
+  <div class="image-modal" *ngIf="imageModalOpened">
+    <app-image-modal ></app-image-modal>
+  </div>

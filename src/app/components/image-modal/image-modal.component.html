@@ -1,0 +1,17 @@
+<div class="image-modal-container">
+  <div class="close-button">
+    <button>
+      <mat-icon fontIcon="close" style="color: white;"></mat-icon>
+    </button>
+  </div>
+
+  <div class="title">
+    <h1>Selecciona la imagen de avatar para el usuario</h1>
+  </div>
+
+  <div class="image-modal-content">
+    <div class="image-modal" *ngFor="let avatarFile of avatarFiles">
+      <img src="./../../../assets/user-avatar/{{avatarFile}}" alt="{{avatarFile}}"/>
+    </div>
+  </div>
+</div>

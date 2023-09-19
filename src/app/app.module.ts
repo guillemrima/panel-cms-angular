@@ -20,6 +20,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { SearchToolComponent } from './components/search-tool/search-tool.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ImageModalComponent } from './components/image-modal/image-modal.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     ConfirmDialogComponent,
     SnackbarComponent,
     SearchToolComponent,
+    ImageModalComponent,
   ],
   imports: [
     BrowserModule,

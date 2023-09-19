@@ -61,4 +61,8 @@ export class DataFormComponent implements OnInit {
     this.isEditUser = false;
     this.userEditData = null
   }
+
+  openImageDialog(): void {
+    this.DataService.openImageModal()
+  }
 }

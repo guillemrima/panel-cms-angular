@@ -66,47 +66,12 @@
         </div>
       </mat-tab>
       <mat-tab label="Adicional">
-        <div class="form-container" [formGroup]="form">
-          <div class="input-container">
-            <mat-form-field appearance="fill">
-              <mat-label>E-mail</mat-label>
-              <input matInput formControlName="email" />
-              <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
-                <mat-error *ngIf="form.get('email')?.hasError('required')">El email es requerido</mat-error>
-              </div>
-            </mat-form-field>
+        <div class="form-container aditional-form" [formGroup]="form">
+          <div class="description">
+            Añade información adicional de los usuarios en esta sección del formulario.
           </div>
           <div class="input-container">
-            <mat-form-field appearance="fill">
-              <mat-label>Contraseña</mat-label>
-              <input matInput formControlName="password" type="password"/>
-              <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
-                <mat-error *ngIf="form.get('password')?.hasError('required')">La contraseña es requerida</mat-error>
-              </div>
-            </mat-form-field>
-          </div>
-          <div class="input-container">
-            <mat-form-field appearance="fill">
-              <mat-label>Confirmar contraseña</mat-label>
-              <input matInput formControlName="passwordConfirm" type="password"/>
-              <div *ngIf="form.get('passwordConfirm')?.invalid && form.get('passwordConfirm')?.touched">
-                <mat-error *ngIf="form.get('passwordConfirm')?.hasError('required')">Debes confimar la contraseña</mat-error>
-              </div>
-            </mat-form-field>
-          </div>
-
-          <div class="button-container">
-            <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()">
-              <ng-container *ngIf="isEditUser; else createUser">
-                Actualizar usuario
-              </ng-container>
-              <ng-template #createUser>
-                Crear usuario
-              </ng-template>
-            </button>
-            <button mat-flat-button color="accent" (click)="resetForm()">
-              <mat-icon aria-hidden="false" aria-label="erase" fontIcon="undo" style="color: white;"></mat-icon>
-            </button>
+            <button type="button" mat-raised-button (click)="openImageDialog()" color="primary">Avatar de usuario</button>
           </div>
         </div>
       </mat-tab>

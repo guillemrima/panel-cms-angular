@@ -1,0 +1,51 @@
+.image-modal-container {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.863);
+}
+
+.close-button {
+  padding: 1rem;
+  display: flex;
+}
+
+.close-button button{
+  all:unset;
+  cursor: pointer;
+  margin-left: 95%;
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.title h1 {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 500;
+  padding-top: 5%;
+  text-align: center;
+}
+
+.image-modal-content {
+  display: grid;
+  grid-template-columns: 10rem 10rem 10rem 10rem;
+  gap: 0.5rem;
+  justify-content: center;
+  align-content: center;
+}
+
+.image-modal  {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.image-modal img {
+  width: 100%;
+  height: 100%;
+  transition: 0.25s ease-in-out;
+}
+
+.image-modal img:hover {
+  transform: scale(110%);
+}
