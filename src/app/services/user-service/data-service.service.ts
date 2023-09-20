@@ -17,6 +17,8 @@ export class DataService {
   private imageModal = new BehaviorSubject<boolean>(false);
   buttonImageModalClicked$ = this.imageModal.asObservable();
 
+  private selectedUserAvatar = new BehaviorSubject<any>(null);
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -84,5 +86,18 @@ export class DataService {
 
   openImageModal() {
     this.imageModal.next(true);
+  }
+
+  SelectImageModal(avatar: any) {
+    this.imageModal.next(false);
+    this.selectedUserAvatar.next(avatar);
+  }
+
+  getUserAvatar(): Observable<any> {
+    return this.selectedUserAvatar.asObservable();
+  }
+
+  closeImageModal() {
+    this.imageModal.next(false)
   }
 }

@@ -1,6 +1,6 @@
 <div class="image-modal-container">
   <div class="close-button">
-    <button>
+    <button (click)="closeImageModal()">
       <mat-icon fontIcon="close" style="color: white;"></mat-icon>
     </button>
   </div>
@@ -10,7 +10,7 @@
   </div>
 
   <div class="image-modal-content">
-    <div class="image-modal" *ngFor="let avatarFile of avatarFiles">
+    <div class="image-modal" *ngFor="let avatarFile of avatarFiles; let i = index" [ngClass]="{'selected': selectedAvatar === i}" (click)="selectAvatar(i)">
       <img src="./../../../assets/user-avatar/{{avatarFile}}" alt="{{avatarFile}}"/>
     </div>
   </div>

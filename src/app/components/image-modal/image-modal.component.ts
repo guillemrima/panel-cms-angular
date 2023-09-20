@@ -8,6 +8,7 @@ import { DataService } from 'src/app/services/user-service/data-service.service'
 })
 export class ImageModalComponent implements OnInit {
   imageModalOpened = false;
+  selectedAvatar: number | null = null;
   avatarFiles = [
     'avatar-1.jpg',
     'avatar-2.jpg',
@@ -22,6 +23,19 @@ export class ImageModalComponent implements OnInit {
   constructor(private DataService: DataService) { }
 
   ngOnInit() {
+  }
+
+  selectAvatar(index: number) {
+    this.selectedAvatar = index;
+
+    setTimeout(() => {
+      if (this.selectedAvatar != null)
+        this.DataService.SelectImageModal(this.avatarFiles[this.selectedAvatar])
+    }, 250)
+  }
+
+  closeImageModal(): void {
+    this.DataService.closeImageModal()
   }
 
 }

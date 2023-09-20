@@ -28,7 +28,8 @@ export class DataFormComponent implements OnInit {
       surnames: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      passwordConfirm: ['', [Validators.required, Validators.minLength(8)]]
+      passwordConfirm: ['', [Validators.required, Validators.minLength(8)]],
+      avatar: [null]
     })
   }
 
@@ -38,11 +39,19 @@ export class DataFormComponent implements OnInit {
       this.form.patchValue(this.userEditData);
       this.isEditUser = true;
     });
+    if (this.form) {
+      this.DataService.getUserAvatar().pipe(skip(1)).subscribe((selectedAvatar) => {
+        const avatarControl = this.form.get('avatar');
+        if (avatarControl) {
+          avatarControl.setValue(selectedAvatar);
+        }
+      });
+    }
   }
 
   onSubmit() {
     const userData = this.form.value;
-
+    console.log(userData)
     if (this.isEditUser) {
       const userId = this.userEditData.id
       this.DataService.updateUser(userId, userData);
