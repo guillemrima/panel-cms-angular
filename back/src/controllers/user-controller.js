@@ -1,6 +1,8 @@
 const db = require("./../models");
 const User = db.User;
 const Op = db.Sequelize.Op;
+const AvatarService = require("./../services/avatar-service");
+
 
 exports.findAll = (req, res) => {
   const filterCategory = req.query.category;
@@ -19,11 +21,14 @@ exports.findAll = (req, res) => {
   })
 };
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
+
   const user = req.body
 
   if (user.avatar) {
-    console.log(user.avatar)
+    const avatarName = user.avatar;
+    const avatarId = await new AvatarService().getAvatarId(avatarName);
+    req.body.avatarId = avatarId
   }
 
   User.create(user).then(async data => {
