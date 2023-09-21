@@ -1,8 +1,6 @@
 'use strict';
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('users', {
       id: {
@@ -26,6 +24,16 @@ module.exports = {
       },
       password: {
         type: Sequelize.STRING
+      },
+      avatarId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'avatars', // Nombre de la tabla a la que hace referencia
+          key: 'id', // Nombre de la columna a la que hace referencia
+        },
+        onUpdate: 'CASCADE', // Opciones para actualizar en cascada
+        onDelete: 'SET NULL', // Opciones para eliminar en cascada
       },
       createdAt: {
         allowNull: false,
