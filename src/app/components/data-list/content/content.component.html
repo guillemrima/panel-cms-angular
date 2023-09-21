@@ -14,24 +14,31 @@
       </button>
     </div>
   </div>
-  <div class="name content">
-    <p>
-    <span>Nombre: </span>{{data.name}}
-    </p>
-  </div>
-  <div class="surnames content">
-    <p>
-    <span>Apellidos: </span>{{data.surnames}}
-    </p>
-  </div>
-  <div class="email content">
-    <p>
-    <span>Email: </span>{{data.email}}
-    </p>
-  </div>
-  <div class="password content">
-    <p>
-      <span>Contraseña: </span>{{data.password}}
-    </p>
+  <div class="userContent">
+    <div class="main">
+      <div class="name content">
+        <p>
+        <span>Nombre: </span>{{data.name}}
+        </p>
+      </div>
+      <div class="surnames content">
+        <p>
+        <span>Apellidos: </span>{{data.surnames}}
+        </p>
+      </div>
+      <div class="email content">
+        <p>
+        <span>Email: </span>{{data.email}}
+        </p>
+      </div>
+      <div class="password content">
+        <p>
+          <span>Contraseña: </span>{{data.password}}
+        </p>
+      </div>
+    </div>
+    <div class="aditional" *ngIf="data.avatarId">
+      Hoa
+    </div>
   </div>
 </div>
