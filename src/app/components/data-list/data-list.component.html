@@ -3,6 +3,14 @@
     <app-search-tool (sendFilterData)="getFilterUsers($event)"></app-search-tool>
   </div>
   <div class="content-container">
-  <app-content *ngFor="let data of dataArray" [data]="data"></app-content>
+    <div class="content" *ngIf="dataArray != undefined; else emptyContent">
+      <app-content   *ngFor="let data of dataArray" [data]="data"></app-content>
+    </div>
+
+  <ng-template  #emptyContent>
+    <div class="empty-content">
+      <p>No hay datos de usuarios.</p>
+    </div>
+  </ng-template>
   </div>
 </section>
