@@ -10,8 +10,16 @@
   </div>
 
   <div class="image-modal-content">
-    <div class="image-modal" *ngFor="let avatarFile of avatarFiles; let i = index" [ngClass]="{'selected': selectedAvatar === i}" (click)="selectAvatar(i)">
-      <img src="./../../../assets/user-avatar/{{avatarFile}}" alt="{{avatarFile}}"/>
+    <div class="image-modal" *ngFor="let avatarFile of avatarImages; let i = index" [ngClass]="{'selected': selectedAvatar === i}" (click)="selectAvatar(i)">
+      <img src="./../../../assets/user-avatar/{{avatarFile.name}}" alt="{{avatarFile}}"/>
     </div>
+  </div>
+
+  <div class="add-button">
+    <button mat-flat-button color="accent" onclick="document.getElementById('fileInput').click()">
+      <mat-icon aria-hidden="false" aria-label="add" fontIcon="add" style="color: rgb(0, 0, 0);"></mat-icon>
+      Añadir nueva imagen de avatar
+    </button>
+    <input type="file" id="fileInput" style="display: none;" (change)="onFileSelected($event)">
   </div>
 </div>

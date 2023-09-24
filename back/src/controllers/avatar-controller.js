@@ -25,3 +25,23 @@ exports.findOne = (req, res) => {
       });
   })
 };
+
+exports.findAll = (req, res) => {
+  Avatar.findAll().then( result => {
+    res.status(200).send(result)
+  })
+};
+
+exports.create = (req, res) => {
+  const avatar = req.files
+  console.log(avatar)
+  // Avatar.create(avatar).then(async result => {
+  //   res.status(200).send(result);
+  // }).catch( async error => {
+  //   res.status(500).send({
+  //     message: error.errors || 'Algún error ha ocurrido al crear el nuevo avatar'
+  //   })
+  // })
+}
+
+

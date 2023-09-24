@@ -38,6 +38,7 @@
 .image-modal  {
   overflow: hidden;
   cursor: pointer;
+  position: relative;
 }
 
 .image-modal img {
@@ -50,6 +51,31 @@
   transform: scale(110%);
 }
 
+.delete-button {
+  position: absolute;
+  top: 0;
+}
+
+.delete-button button {
+  all: unset;
+  cursor: pointer;
+  font-size: 0.5rem;
+}
+
 .selected {
-  border: 4px solid rgb(46, 237, 59);
+  border: 4px solid rgb(30, 170, 39);
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.add-button button {
+  transition: 150ms;
+}
+
+.add-button button:hover {
+  transform: scale(105%);
 }
