@@ -30,7 +30,6 @@ import { ImageModalComponent } from './components/image-modal/image-modal.compon
     DataFormComponent,
     ContentComponent,
     ConfirmDialogComponent,
-    SnackbarComponent,
     SearchToolComponent,
     ImageModalComponent,
   ],

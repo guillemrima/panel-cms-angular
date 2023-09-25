@@ -8,15 +8,14 @@ import { SnackbarComponent } from 'src/app/components/snackbar/snackbar.componen
 export class SnackbarService {
 
   constructor(
-    private snackBar: MatSnackBar
+    private _snackBar: MatSnackBar
   ) { }
 
   showSnackBar(message: string) {
-    this.snackBar.openFromComponent(SnackbarComponent, {
-      data: { message },
-      duration: 3000,
-      horizontalPosition: 'end',
-      verticalPosition: 'top'
-    })
+    this._snackBar.open(
+      message,
+      'Ok',
+      { duration: 2000 }
+    )
   }
 }

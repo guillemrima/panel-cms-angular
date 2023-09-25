@@ -1,7 +1,7 @@
 const db = require("./../models");
 const Avatar = db.Avatar;
 const Op = db.Sequelize.Op;
-
+const AvatarService = require("./../services/avatar-service");
 
 exports.findOne = (req, res) => {
 
@@ -32,16 +32,27 @@ exports.findAll = (req, res) => {
   })
 };
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
   const avatar = req.files
-  console.log(avatar)
-  // Avatar.create(avatar).then(async result => {
-  //   res.status(200).send(result);
-  // }).catch( async error => {
-  //   res.status(500).send({
-  //     message: error.errors || 'Algún error ha ocurrido al crear el nuevo avatar'
-  //   })
-  // })
+  try{
+    const result = await new AvatarService().uploadAvatar(avatar)
+
+    Avatar.create(result).then( async data => {
+      res.status(200).send({
+        status: 200,
+        message: "¡Avatar cargado correctamente!"
+      })
+    }).catch (error => {
+      res.status(500).send({
+        message: "No se que pasa"
+      })
+    })
+  }
+  catch (error) {
+    res.status(500).send({
+      message: 'Aqui tampoco se que pasa',
+    })
+  }
 }
 
 
