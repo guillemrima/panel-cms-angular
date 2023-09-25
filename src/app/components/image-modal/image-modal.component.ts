@@ -26,11 +26,11 @@ export class ImageModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.http.get('http://localhost:8080/avatars').subscribe(response => {
-    //   if (response) {
-    //     this.avatarImages = response
-    //   }
-    // })
+    this.http.get('http://localhost:8080/avatars').subscribe(response => {
+      if (response) {
+        this.avatarImages = response
+      }
+    })
   }
 
   selectAvatar(index: number) {
