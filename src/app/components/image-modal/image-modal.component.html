@@ -11,7 +11,7 @@
 
   <div class="image-modal-content">
     <div class="image-modal" *ngFor="let avatarFile of avatarImages; let i = index" [ngClass]="{'selected': selectedAvatar === i}" (click)="selectAvatar(i)">
-      <img src="./../../../assets/user-avatar/{{avatarFile.name}}.webp" alt="{{avatarFile}}"/>
+      <img src='http://localhost:8080/avatars/{{avatarFile.name}}' alt="{{avatarFile}}"/>
     </div>
   </div>
 

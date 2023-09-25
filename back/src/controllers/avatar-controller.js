@@ -1,29 +1,23 @@
 const db = require("./../models");
+const path = require('path')
 const Avatar = db.Avatar;
 const Op = db.Sequelize.Op;
 const AvatarService = require("./../services/avatar-service");
 
 exports.findOne = (req, res) => {
 
-  const id = req.params.id;
+  const filename = req.params.filename + ".webp";
 
-  Avatar.findByPk(id)
+  const options = {
+    root: __dirname + '../../../storage/gallery/original/',
+    dotfiles: 'deny',
+    headers: {
+      'x-timestamp': Date.now(),
+      'x-sent': true
+    }
+  }
 
-  .then(data => {
-
-      if (data) {
-          res.status(200).send(data);
-      } else {
-          res.status(404).send({
-              message: `No se puede encontrar el elemento con la id=${id}.`
-          });
-      }
-
-  }).catch(err => {
-      res.status(500).send({
-          message: "Algún error ha surgido al recuperar la id=" + id
-      });
-  })
+  res.sendFile(filename, options)
 };
 
 exports.findAll = (req, res) => {

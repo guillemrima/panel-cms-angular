@@ -17,7 +17,7 @@ module.exports = (app, upload) => {
       {name: 'file', maxCount: 1}
     ])
 
-    router.get("/:id", controller.findOne);
+    router.get("/:filename", controller.findOne);
     router.get("/", controller.findAll);
     router.post("/", [uploadFields] ,controller.create);
 
