@@ -24,13 +24,7 @@ exports.findAll = (req, res) => {
 exports.create = async (req, res) => {
 
   const user = req.body
-
-  if (user.avatar) {
-    const avatarName = user.avatar;
-    const avatarId = await new AvatarService().getAvatarId(avatarName);
-    req.body.avatarId = avatarId
-  }
-
+  console.log(user)
   User.create(user).then(async data => {
     res.status(200).send(data);
   }).catch(async err => {

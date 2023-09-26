@@ -9,7 +9,7 @@ exports.findOne = (req, res) => {
   const filename = req.params.filename + ".webp";
 
   const options = {
-    root: __dirname + '../../../storage/gallery/original/',
+    root: __dirname + '../../storage/gallery/original/',
     dotfiles: 'deny',
     headers: {
       'x-timestamp': Date.now(),
@@ -38,13 +38,13 @@ exports.create = async (req, res) => {
       })
     }).catch (error => {
       res.status(500).send({
-        message: "No se que pasa"
+        message: errors
       })
     })
   }
   catch (error) {
     res.status(500).send({
-      message: 'Aqui tampoco se que pasa',
+      message: error
     })
   }
 }

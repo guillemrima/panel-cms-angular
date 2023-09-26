@@ -29,7 +29,7 @@ export class DataFormComponent implements OnInit {
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       passwordConfirm: ['', [Validators.required, Validators.minLength(8)]],
-      avatar: [null]
+      avatarId: [null]
     })
   }
 
@@ -41,9 +41,9 @@ export class DataFormComponent implements OnInit {
     });
     if (this.form) {
       this.DataService.getUserAvatar().pipe(skip(1)).subscribe((selectedAvatar) => {
-        const avatarControl = this.form.get('avatar');
+        const avatarControl = this.form.get('avatarId');
         if (avatarControl) {
-          avatarControl.setValue(selectedAvatar);
+          avatarControl.setValue(selectedAvatar.id);
         }
       });
     }
