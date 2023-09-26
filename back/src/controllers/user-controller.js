@@ -1,5 +1,6 @@
 const db = require("./../models");
 const User = db.User;
+const Avatar = db.Avatar;
 const Op = db.Sequelize.Op;
 const AvatarService = require("./../services/avatar-service");
 
@@ -7,18 +8,24 @@ const AvatarService = require("./../services/avatar-service");
 exports.findAll = (req, res) => {
   const filterCategory = req.query.category;
   const filterData = req.query.data;
-  let condition = {}
+  let condition = {};
 
   if (filterCategory && filterData != undefined) {
-    condition = {[filterCategory] : [filterData]}
+    condition = { [filterCategory]: [filterData] };
   }
 
   User.findAll({
-    where: condition
+    where: condition,
+    include: [Avatar],
   })
-  .then(result => {
-    res.status(200).send(result)
-  })
+    .then((results) => {
+      res.status(200).send(results);
+    })
+    .catch((error) => {
+      res.status(500).send({
+        message: 'Error al buscar usuarios: ' + error,
+      });
+    });
 };
 
 exports.create = async (req, res) => {

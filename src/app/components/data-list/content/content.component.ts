@@ -8,21 +8,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss']
 })
-export class ContentComponent implements OnInit {
 
-  avatarImage: any;
+export class ContentComponent implements OnInit {
 
   constructor(private DataService: DataService, private ConfirmDialogService: ConfirmDialogService, private http: HttpClient) { }
 
   @Input() data: any;
 
   ngOnInit(): void {
-    if (this.data.avatarId) {
-      const avatarId = this.data.avatarId
-      this.http.get(`http://localhost:8080/avatars/${avatarId}`).subscribe(avatar => {
-        this.avatarImage = avatar
-      })
-    }
   }
 
   deleteUser(): void {

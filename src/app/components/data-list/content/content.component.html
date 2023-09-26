@@ -37,8 +37,11 @@
         </p>
       </div>
     </div>
-    <div class="avatar" *ngIf="avatarImage">
-      <img src="../../../../assets/user-avatar/{{avatarImage.name}}" alt="user avatar" />
+    <div class="avatar" *ngIf="data.Avatar">
+      <img
+        src="http://localhost:8080/avatars/{{data.Avatar.name}}"
+        alt="{{data.Avatar.name}}"
+      />
     </div>
   </div>
 </div>
